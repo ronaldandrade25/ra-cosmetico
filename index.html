@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css" />
+    <title>RA Cosmetico</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <h1>RA Cosmetico</h1>
+        </div>
+
+        <div class="search-container">
+            <input placeholder="Buscar Produto..." class="search-input" />
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge">0</span>
+        </div>
+    </header>
+
+    <div class="categories-container">
+        <nav class="categories-bar">
+            <button class="category-btn active" data-category="all">
+                <i class="fa-solid fa-border-all"></i> Todos
+            </button>
+
+            <!-- Ícones por categoria -->
+            <button class="category-btn" data-category="maquiagens">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Maquiagens
+            </button>
+
+            <button class="category-btn" data-category="skincare">
+                <i class="fa-solid fa-spa"></i> Skin care
+            </button>
+
+            <button class="category-btn" data-category="acessórios">
+                <i class="fa-solid fa-gem"></i> Acessórios
+            </button>
+        </nav>
+    </div>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="hero-tag">Coleção RA</span>
+            <h2>Black Friday Antecipada</h2>
+            <p>Até 50% de desconto em produtos selecionados</p>
+        </div>
+    </section>
+
+    <main class="products">
+        <div class="products-container"><!-- cards gerados pelo script --></div>
+    </main>
+
+    <div class="cart-overlay"></div>
+
+    <aside class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Meu Carrinho <i class="fa-solid fa-cart-shopping"></i></h3>
+            <button class="close-cart-btn" aria-label="Fechar carrinho">&times;</button>
+        </div>
+
+        <div class="cart-body"></div>
+
+        <div class="cart-footer">
+            <div class="options-toggle">
+                <button class="delivery-btn active" data-option="delivery">
+                    <i class="fa-solid fa-truck-fast"></i> Entrega
+                </button>
+                <button class="delivery-btn" data-option="pickup">
+                    <i class="fa-solid fa-store"></i> Retirada
+                </button>
+            </div>
+
+            <div id="delivery-form-container">
+                <div class="form-group">
+                    <label for="delivery-name">Seu Nome</label>
+                    <input type="text" id="delivery-name" placeholder="Nome e sobrenome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-phone">Seu Telefone (WhatsApp)</label>
+                    <input type="tel" id="delivery-phone" placeholder="(XX) XXXXX-XXXX" maxlength="15" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-cep">CEP</label>
+                    <input type="text" id="delivery-cep" placeholder="00000-000" maxlength="9" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-address">Endereço</label>
+                    <textarea id="delivery-address" placeholder="Lote, Quadra, Número" required></textarea>
+                </div>
+
+                <div class="delivery-fee-notice">
+                    A taxa de entrega será calculada de acordo com a sua região.
+                </div>
+
+                <div class="payment-options-container">
+                    <h4>Forma de Pagamento</h4>
+
+                    <label class="payment-option selected">
+                        <input type="radio" name="payment" value="PIX" checked> PIX
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Cartão de Crédito"> Cartão de Crédito
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Cartão de Débito"> Cartão de Débito
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Dinheiro"> Dinheiro
+                    </label>
+
+                    <div id="troco-container">
+                        <div class="form-group">
+                            <label for="troco-para">Precisa de troco para quanto?</label>
+                            <input type="number" id="troco-para" placeholder="Ex: 50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pickup-form-container" style="display: none;">
+                <div class="form-group">
+                    <label for="pickup-name">Nome para Retirada</label>
+                    <input type="text" id="pickup-name" placeholder="Digite nome e sobrenome" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Agende a Data e Hora</label>
+                    <div class="date-time-row">
+                        <input type="date" id="pickup-date" required>
+                        <select id="pickup-time" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coupon-container">
+                <input type="text" id="coupon-input" placeholder="Cupom de desconto">
+                <button id="apply-coupon-btn">Aplicar</button>
+            </div>
+
+            <p id="coupon-feedback" class="coupon-feedback"></p>
+
+            <div class="cart-summary">
+                <div class="summary-line"><span>Subtotal</span><span id="cart-subtotal">R$ 0,00</span></div>
+                <div class="summary-line discount-line" style="display: none;">
+                    <span>Desconto</span><span id="cart-discount">- R$ 0,00</span>
+                </div>
+                <div class="summary-line total"><span>Total</span><span id="cart-total">R$ 0,00</span></div>
+            </div>
+        </div>
+
+        <div class="finish-order-btn-container">
+            <button id="finish-order-btn" class="finish-order-btn" disabled>
+                <i class="fab fa-whatsapp"></i> Finalizar Pedido
+            </button>
+        </div>
+    </aside>
+
+    <div class="view-cart-banner">
+        <p>Total: <span id="banner-total">R$ 0,00</span></p>
+        <button class="view-cart-banner-btn">Ver Carrinho</button>
+    </div>
+
+    <footer>
+        <p>2025 - RA Cosmetico. Todos os direitos reservados</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
