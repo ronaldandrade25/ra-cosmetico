@@ -39,18 +39,9 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="./firebase-config.js"></script>
 
 <script>
-// TODO: preencher com as credenciais do Firebase deste projeto
-const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
-};
-
 const produtos = [
   { id: 1, nome: "Batom",                                          categoria: "maquiagens", preco: 49.00,  imagem: "./assets/batom.jpg",                descricao: "Batom Cremoso Vermelho" },
   { id: 2, nome: "Kit Mini Batom + Mini Blush",                     categoria: "maquiagens", preco: 90.00,  imagem: "./assets/kit-batom blush.webp",     descricao: "Kit Mini Batom Líquido Nude Matte + Mini Blush" },
