@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let categorias = [];
     try {
         const catSnap = await db.collection("categorias").get();
-        categorias = catSnap.docs.map(d => ({ ...d.data() }));
+        categorias = catSnap.docs.map(d => ({ ...d.data() })).filter(c => c.id !== "all");
     } catch (e) {
         console.error("Erro ao carregar categorias do Firebase:", e);
     }
