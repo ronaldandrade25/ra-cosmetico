@@ -6,6 +6,7 @@ Catálogo de produtos em HTML/CSS/JS puro (sem build) que usa **Firebase Firesto
 
 | Arquivo | Função |
 |---|---|
+| `firebase-config.js` | Credenciais do Firebase (único lugar a preencher) |
 | `index.html` + `style.css` + `script.js` | Loja pública (lê produtos, categorias, cupons e configurações do Firestore) |
 | `admin.html` | Painel administrativo (login, produtos, categorias, cupons, vendas, configurações) |
 | `seed-firebase.html` | Carga inicial: envia 6 produtos, as categorias (Maquiagens, Skin care, Acessórios) e o cupom `DESCONTO10` ao Firestore |
@@ -23,11 +24,7 @@ Catálogo de produtos em HTML/CSS/JS puro (sem build) que usa **Firebase Firesto
 5. Em **Authentication → Users → Adicionar usuário**, crie o e-mail e a senha do admin.
 
 ### 2. Colar o `firebaseConfig` (obrigatório — sem isso a loja não carrega)
-O mesmo bloco precisa ser preenchido em **3 arquivos**:
-
-- `script.js` (linhas 1–13, loja)
-- `admin.html` (bloco `firebaseConfig`, por volta da linha 542)
-- `seed-firebase.html` (bloco `firebaseConfig`, por volta da linha 45)
+Preencha **um único arquivo**, `firebase-config.js`, que é usado por `index.html`, `admin.html` e `seed-firebase.html`:
 
 ```js
 const firebaseConfig = {
